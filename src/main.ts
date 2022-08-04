@@ -1,7 +1,7 @@
 import { App } from './app/app';
 
 
-class Main {
+export class Main {
 
     private app: App;
 
@@ -17,12 +17,16 @@ class Main {
     }
    async join(){
     await this.app.join();
-     this.app.render();
-    await this.app.getRooms();
+    this.app.render(); 
+   // await this.app.getRooms();
              
     }
 
 }
 
-var mn=new Main();
-mn.join();
+
+//for(var i=0;i<1000;i++){
+    var mn=new Main();
+    mn.join();
+//}
+

@@ -6,6 +6,7 @@
     "type": "git",
     "url": "https://github.com/DaanDeSmedt/threejs-typescript-webpack-boilerplate"
   },
+
   "keywords": [
     "Three.js",
     "TypeScript",
@@ -17,7 +18,8 @@
   "license": "ISC",
   "scripts": {
     "start": "webpack serve --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "build": "webpack --config webpack.prod.js",
+    "test": "npx colyseus-loadtest script.ts --room battle --numClients 50 --endpoint ws://localhost:2567"
   },
   "dependencies": {
     "colyseus.js": "^0.14.13",
@@ -25,7 +27,9 @@
     "three": "^0.135.0"
   },
   "devDependencies": {
+    "@colyseus/loadtest": "^0.14.7",
     "@types/three": "^0.134.0",
+    "concurrently": "^7.1.0",
     "ts-loader": "^9.2.6",
     "typescript": "^4.5.2",
     "webpack": "^5.64.4",
