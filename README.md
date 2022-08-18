@@ -63,15 +63,16 @@ const room = await this.client.joinOrCreate("my_room"||process.env.room_name);
 The onAdd callback  allows the client to listen to the state of a room if another client joins, it can only be used in collection of items (MapSchema, ArraySchema...).The onAdd callback is called with the new instance and its key on holder object as argument.
 
 ```typescript
-      this.my_room.state.players.onAdd = (player: any, key: any) => {
-         player.onChange = function(changes) {
-          changes.forEach(change => {
-              console.log(change.field);
-              console.log(change.value);
-              console.log(change.previousValue);
-          })
-    };
-      };
+this.my_room.state.players.onAdd = (player: any, key: any) => {
+  player.onChange = function (changes) {
+    changes.forEach((change) => {
+      console.log(change.field);
+      console.log(change.value);
+      console.log(change.previousValue);
+    });
+  };
+};
+
 ```
 ## OnRemove
 The onRemove callback can only be used in maps (MapSchema) and arrays (ArraySchema). The onRemove callback is called with the removed instance and its key on holder object as argument.
