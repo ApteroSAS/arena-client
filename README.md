@@ -13,6 +13,7 @@
 -[Three.js](https://threejs.org/)
  
 ## Installation
+1.Get the server connection link at (https://console.colyseus.io/login)
 Clone the template repository
 ```
 git clone https://github.com/ApteroSAS/arena-client.git
@@ -44,5 +45,6 @@ Webpack has been pre-configured to build the project to `./dist` with support fo
  
 # Configuration 
 ## Connecting to server
+to configur the client application and connect it to the server go to the 
 ![Connecting to server](image.png)
 ![Joining to a room](image.png)
