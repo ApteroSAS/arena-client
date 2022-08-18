@@ -74,4 +74,19 @@ The onAdd callback  allows the client to listen to the state of a room if anothe
       };
 ```
 ## OnRemove
+The onRemove callback can only be used in maps (MapSchema) and arrays (ArraySchema). The onRemove callback is called with the removed instance and its key on holder object as argument.
+```typescript
+    this.my_room.state.players.onRemove = (player: any, sessionId: any) => {
+        this.remove(player, sessionId);
+      };
+     ```
 ## Send data to the room
+```typescript
+     this.my_room.send("move", {
+          x: this.cube.position.x,
+          y: this.cube.position.y,
+          xr: this.cube.rotation.x,
+          yr: this.cube.rotation.y,
+          lastUpdate: Date.now(),
+        });
+     ```
