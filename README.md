@@ -19,8 +19,9 @@ Clone the template repository
 git clone https://github.com/ApteroSAS/arena-client.git
 ```
 
-Install the required dependencies
+To be able to build the client application, you'll need to enter in the folder, and install the required dependencies first.
 ```
+cd ArenaClient
 npm install
 ```
 
