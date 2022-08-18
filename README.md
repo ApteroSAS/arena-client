@@ -25,8 +25,14 @@ git clone https://github.com/ApteroSAS/arena-client.git
 cd ArenaClient
 npm install
 ```
-4.To configure  client application and connect it to the server goes to the webpack config file an add the endpoint link
-Server configuration
+4.To configure the client application and connect it to the server go to the webpack config file an add the endpoint link
+```
+  plugins: [
+        new webpack.DefinePlugin({
+          "process.env.ENDPOINT": JSON.stringify("ws://localhost:2567")
+        })
+      ]
+```
 ## How to run
 
 ```
