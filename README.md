@@ -52,8 +52,8 @@ npm run build
 
 Webpack has been pre-configured to build the project to `./dist` with support for source mapping.
  
-#Connecting to server
-```
+# Connecting to server
+```typescript
 import { Client } from "colyseus.js";
 
 const ENDPOINT = process.env.ENDPOINT;
