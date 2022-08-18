@@ -26,7 +26,7 @@ cd ArenaClient
 npm install
 ```
 4.To configure the client application and connect it to the server go to the webpack config file and add the endpoint link
-```
+```typescript
   plugins: [
         new webpack.DefinePlugin({
           "process.env.ENDPOINT": JSON.stringify("ws://localhost:2567")
