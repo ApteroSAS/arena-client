@@ -48,10 +48,7 @@ Making code changes will auto reload the served webpage and reflect changes made
 
 ```
 npm run build
-```
-
-Webpack has been pre-configured to build the project to `./dist` with support for source mapping.
- 
+``` 
 # Connecting to server
 ```typescript
 import { Client } from "colyseus.js";
@@ -61,4 +58,22 @@ export const client = new Client(ENDPOINT);
 # Joining to a room
 ```typescript
 const room = await this.client.joinOrCreate("my_room"||process.env.room_name);
+```
+## OnAdd
+The onAdd callback  allows the client to listen to the state of a room if another client joins the room it can only be used in collection of items (MapSchema, ArraySchema...).The onAdd callback is called with the new instance and its key on holder object as argument.
+```typescript
+      this.my_room.state.players.onAdd = (player: any, key: any) => {
+        this.add(player, key);
+      };
+```
+```typescript
+      this.my_room.state.players.onAdd = (player: any, key: any) => {
+         player.onChange = function(changes) {
+          changes.forEach(change => {
+              console.log(change.field);
+              console.log(change.value);
+              console.log(change.previousValue);
+          })
+    };
+      };
 ```
