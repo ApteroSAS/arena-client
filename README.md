@@ -58,4 +58,7 @@ import { Client } from "colyseus.js";
 const ENDPOINT = process.env.ENDPOINT;
 export const client = new Client(ENDPOINT);
 ```
-#Joining to a room
+# Joining to a room
+```typescript
+const room = await this.client.joinOrCreate("my_room"||process.env.room_name);
+```
