@@ -55,9 +55,7 @@ Webpack has been pre-configured to build the project to `./dist` with support fo
 # Connecting to server
 ```typescript
 import { Client } from "colyseus.js";
-
 const ENDPOINT = process.env.ENDPOINT;
-
 export const client = new Client(ENDPOINT);
 ```
 #Joining to a room
