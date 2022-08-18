@@ -15,12 +15,12 @@
 ## Installation
 1.Get the server connection link at [Arena](https://console.colyseus.io/login)
 
-Clone the template repository
+Clone the repository
 ```
 git clone https://github.com/ApteroSAS/arena-client.git
 ```
 
-To be able to build the client application, you'll need to enter in the folder, and install the required dependencies first.
+2.To be able to build the client application, you'll need to enter in the folder, and install the required dependencies first.
 ```
 cd ArenaClient
 npm install
