@@ -19,7 +19,8 @@ module.exports = merge(common, {
     //wss://rtd9iz.colyseus.dev
     plugins: [
         new webpack.DefinePlugin({
-          "process.env.ENDPOINT": JSON.stringify("ws://localhost:2567")
+          "process.env.ENDPOINT": JSON.stringify("ws://localhost:2567"),
+          "process.env.room_name": JSON.stringify("my_room")
         })
       ]
 });

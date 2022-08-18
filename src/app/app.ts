@@ -9,6 +9,7 @@ import THREE, {
 import { Cube } from "./shapes";
 import * as Colyseus from "colyseus.js";
 import { client } from "../network/network";
+import { prefetch } from "webpack";
 export class App {
   private renderer: WebGLRenderer;
   private scene: Scene;
@@ -104,7 +105,7 @@ export class App {
   }
   async join() {
     try {
-      const room = await this.client.joinOrCreate("my_room");
+      const room = await this.client.joinOrCreate("my_room"||process.env.room_name);
       this.my_room = room;
       this.roomID = room.id;
       this.sessionID = room.sessionId;
