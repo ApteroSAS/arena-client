@@ -44,18 +44,18 @@ Webpack has been pre-configured to provide a auto opening development server wit
 Making code changes will auto reload the served webpage and reflect changes made.
 
 
-# Building for production
+## Building for production
 
 ```
 npm run build
 ``` 
-# Connecting to server
+## Connecting to server
 ```typescript
 import { Client } from "colyseus.js";
 const ENDPOINT = process.env.ENDPOINT;
 export const client = new Client(ENDPOINT);
 ```
-# Joining to a room
+## Joining to a room
 ```typescript
 this.room = await this.client.joinOrCreate("my_room"||process.env.room_name);
 ```
