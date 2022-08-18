@@ -1,6 +1,6 @@
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
-
+const webpack = require("webpack");
 module.exports = merge(common, {
     mode: 'development',
     devtool: 'inline-source-map',
@@ -15,5 +15,11 @@ module.exports = merge(common, {
         devMiddleware: {
             writeToDisk: false
         }
-    }
+    },
+    //wss://rtd9iz.colyseus.dev
+    plugins: [
+        new webpack.DefinePlugin({
+          "process.env.ENDPOINT": JSON.stringify("ws://localhost:2567")
+        })
+      ]
 });

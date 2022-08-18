@@ -1,21 +1,21 @@
 {
-  "name": "threejs-typescript-webpack-boilerplate",
+  "name": "threejs-typescript-arena-client",
   "version": "1.0.0",
-  "description": "A basic, ready to rumble, Three.js - TypeScript and Webpack enabled boilerplate template to kick-off your new project.",
+  "description": "A basic threejs  arena client",
   "repository": {
     "type": "git",
-    "url": "https://github.com/DaanDeSmedt/threejs-typescript-webpack-boilerplate"
+    "url": "https://github.com/ApteroSAS/arena-client.git"
   },
 
   "keywords": [
     "Three.js",
     "TypeScript",
     "Webpack",
-    "boilerplate",
+    "arena",
+    "client",
     "template"
   ],
-  "author": "Daan De Smedt",
-  "license": "ISC",
+  "author": "EL AZOUZI CHAIMAE",
   "scripts": {
     "start": "webpack serve --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
@@ -27,9 +27,7 @@
     "three": "^0.135.0"
   },
   "devDependencies": {
-    "@colyseus/loadtest": "^0.14.7",
     "@types/three": "^0.134.0",
-    "concurrently": "^7.1.0",
     "ts-loader": "^9.2.6",
     "typescript": "^4.5.2",
     "webpack": "^5.64.4",

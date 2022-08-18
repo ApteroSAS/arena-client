@@ -3,14 +3,12 @@ import THREE, {
   Scene,
   TextureLoader,
   Vector3,
-  WebGLInfo,
   WebGLRenderer,
 } from "three";
 
 import { Cube } from "./shapes";
-
 import * as Colyseus from "colyseus.js";
-
+import { client } from "../network/network";
 export class App {
   private renderer: WebGLRenderer;
   private scene: Scene;
@@ -24,6 +22,7 @@ export class App {
   private sessionID: string = "";
   private roomID: string = "";
   private connected: boolean = false;
+  private prevValue: number = 0;
 
   constructor(canvasElem: HTMLCanvasElement, width: number, height: number) {
     this.scene = new Scene();
@@ -40,11 +39,9 @@ export class App {
       canvas: canvasElem,
     });
 
-    this.cube = new Cube(0.2,0.2,0.2);
+    this.cube = new Cube(0.2, 0.2, 0.2);
     this.resize(width, height);
-
-    //this.client = new Colyseus.Client("wss://rtd9iz.colyseus.dev");
-    this.client=new Colyseus.Client('ws://localhost:2567');
+    this.client = client;
   }
 
   render() {
@@ -52,31 +49,30 @@ export class App {
       //this.cube.rotate();
       this.renderer.render(this.scene, this.camera);
       requestAnimationFrame(() => this.render());
-      //this.move();
-  
+      this.move();
     } catch (e) {
       console.log("error message", e);
     }
   }
   move() {
-      if (this.connected) {    
-        this.roam();
-        this.cube.position.setX(this.cube.position.x + 0.01);
-        this.my_room.send("move", {
-          x: this.cube.position.x,
-          y: this.cube.position.y,
-          xr: this.cube.rotation.x,
-          yr: this.cube.rotation.y,
-        });
-        
-      }  
+    if (this.connected) {
+      this.roam();
+      this.cube.position.setX(this.cube.position.x + 0.01);
+      const lastUpdate = Date.now();
+      this.my_room.send("move", {
+        x: this.cube.position.x,
+        y: this.cube.position.y,
+        xr: this.cube.rotation.x,
+        yr: this.cube.rotation.y,
+        lastUpdate: lastUpdate,
+      });
+    }
   }
   async reconnect() {
     const tryReconnect = () => {
       console.log("try to reconnect");
       setTimeout(() => this.reconnect(), 100);
     };
-
     try {
       const room = await this.client.reconnect(this.roomID, this.sessionID);
       console.log("joined successfully", room);
@@ -85,7 +81,6 @@ export class App {
       // add listner
       this.my_room.state.players.onAdd = (player: any, key: any) => {
         this.add(player, key);
-
       };
       this.my_room.state.players.onRemove = (player: any, sessionId: any) => {
         this.remove(player, sessionId);
@@ -145,14 +140,11 @@ export class App {
     }
   }
 
-
   private isOutOfBoundsX(x: any) {
-    ///return ((x >= window.innerWidth / 2) || (x <= (0 - window.innerWidth / 2)));
     return x >= 2;
   }
 
   private isOutOfBoundsY(y: any) {
-    //return ((y >=  window.innerHeight / 2) || (y <= (0 -  window.innerHeight / 2)));
     return y >= 2;
   }
 
@@ -167,16 +159,14 @@ export class App {
 
     if (this.isOutOfBoundsX(x)) {
       this.cube.position.setX(this.cube.position.x * -1);
-      this.cube.position.setY(this.cube.position.y+0.5);
+      this.cube.position.setY(this.cube.position.y + 0.5);
     }
 
     if (this.isOutOfBoundsY(y)) {
       this.cube.position.setY(this.cube.position.y * -1);
     }
   }
-
   private add(player: any, key: any) {
-
     if (this.my_room.sessionId == key) {
       if (this.playerEntities[key] == null) {
         this.cube.position.setX(player.x);
@@ -184,13 +174,12 @@ export class App {
         this.cube.position.setZ(player.z);
         this.playerEntities[key] = this.cube;
         this.cube.position.setX(0.3);
-        console.log(this.cube.position.y);
-        //this.cube.position.setY(this.cube.position.y + 0.01);
         this.my_room.send("move", {
           x: this.cube.position.x,
           y: this.cube.position.y,
           xr: this.cube.rotation.x,
           yr: this.cube.rotation.y,
+          lastUpdate: Date.now(),
         });
       }
     } else {
@@ -199,18 +188,20 @@ export class App {
         xr = 0,
         yr = 0;
       if (this.playerEntities[key] == null) {
-        this.playerEntities[key] = new Cube(0.05,0.05,0.05);
+        this.playerEntities[key] = new Cube(0.2, 0.2, 0.2);
       }
       this.playerEntities[key].position.setX(player.x);
       this.playerEntities[key].position.setY(player.y);
       this.playerEntities[key].position.setZ(player.z);
       this.playerEntities[key].rotation.set(player.xr, player.yr, 0);
-      //console.log('test');
       player.onChange = (changes: any) => {
-        if(key!=this.sessionID){
-          console.log("hello");
+        if (key != this.sessionID) {
+          if (this.prevValue != changes[0].previousValue) {
+            console.log(this.prevValue - changes[0].previousValue);
+          }
+          this.prevValue = changes[0].value;
         }
-       
+
         changes.map((change: any) => {
           if (change.field == "x") {
             x = change.value;
