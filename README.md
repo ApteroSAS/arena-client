@@ -52,5 +52,12 @@ npm run build
 
 Webpack has been pre-configured to build the project to `./dist` with support for source mapping.
  
-![Connecting to server](image.png)
-![Joining to a room](image.png)
+#Connecting to server
+```
+import { Client } from "colyseus.js";
+
+const ENDPOINT = process.env.ENDPOINT;
+
+export const client = new Client(ENDPOINT);
+```
+#Joining to a room
