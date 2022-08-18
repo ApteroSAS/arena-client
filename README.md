@@ -57,13 +57,13 @@ export const client = new Client(ENDPOINT);
 ```
 # Joining to a room
 ```typescript
-const room = await this.client.joinOrCreate("my_room"||process.env.room_name);
+this.room = await this.client.joinOrCreate("my_room"||process.env.room_name);
 ```
 ## OnAdd
 The onAdd callback  allows the client to listen to the state of a room if another client joins, it can only be used in collection of items (MapSchema, ArraySchema...).The onAdd callback is called with the new instance and its key on holder object as argument.
 
 ```typescript
-this.my_room.state.players.onAdd = (player: any, key: any) => {
+this.room.state.players.onAdd = (player: any, key: any) => {
   player.onChange = function (changes) {
     changes.forEach((change) => {
       console.log(change.field);
@@ -77,17 +77,18 @@ this.my_room.state.players.onAdd = (player: any, key: any) => {
 ## OnRemove
 The onRemove callback can only be used in maps (MapSchema) and arrays (ArraySchema). The onRemove callback is called with the removed instance and its key on holder object as argument.
 ```typescript
-    this.my_room.state.players.onRemove = (player: any, sessionId: any) => {
-        this.remove(player, sessionId);
-      };
+this.room.state.players.onRemove = (player: any, sessionId: any) => {
+  this.remove(player, sessionId);
+};
+
      ```
 ## Send data to the room
 ```typescript
-     this.my_room.send("move", {
-          x: this.cube.position.x,
-          y: this.cube.position.y,
-          xr: this.cube.rotation.x,
-          yr: this.cube.rotation.y,
-          lastUpdate: Date.now(),
-        });
+this.room.send("move", {
+    x: this.cube.position.x,
+    y: this.cube.position.y,
+    xr: this.cube.rotation.x,
+    yr: this.cube.rotation.y,
+    lastUpdate: Date.now(),
+  });
      ```
