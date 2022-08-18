@@ -23,15 +23,13 @@ To be able to build the client application, you'll need to enter in the folder, 
 cd ArenaClient
 npm install
 ```
-
-
 ## How to run
 
 ```
 npm run start
 ```
 
-Webpack has been pre-configured to provide a auto opening development server with live reload support. After running above command, your browser will automatically open http://localhost:9999/ and serve the boilerplate Three.js scene.  
+Webpack has been pre-configured to provide a auto opening development server with live reload support. After running above command, your browser will automatically open http://localhost:9999/ and serve the Three.js scene.  
 
 Making code changes will auto reload the served webpage and reflect changes made.
 
