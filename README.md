@@ -1,4 +1,4 @@
-# Three.js TypeScript client template
+# Three.js TypeScript colyseus arena client template
 
 
 ## Features
