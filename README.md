@@ -15,16 +15,18 @@
 ## Installation
 1.Get the server connection link at [Arena](https://console.colyseus.io/login)
 
-Clone the repository
+2.Clone the repository
 ```
 git clone https://github.com/ApteroSAS/arena-client.git
 ```
 
-2.To be able to build the client application, you'll need to enter in the folder, and install the required dependencies first.
+3.To be able to build the client application, you'll need to enter in the folder, and install the required dependencies first.
 ```
 cd ArenaClient
 npm install
 ```
+4.To configure  client application and connect it to the server goes to the webpack config file an add the endpoint link
+Server configuration
 ## How to run
 
 ```
@@ -44,8 +46,5 @@ npm run build
 
 Webpack has been pre-configured to build the project to `./dist` with support for source mapping.
  
-# Configuration 
-## Connecting to server
-to configur the client application and connect it to the server go to the 
 ![Connecting to server](image.png)
 ![Joining to a room](image.png)
