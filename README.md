@@ -61,11 +61,7 @@ const room = await this.client.joinOrCreate("my_room"||process.env.room_name);
 ```
 ## OnAdd
 The onAdd callback  allows the client to listen to the state of a room if another client joins the room it can only be used in collection of items (MapSchema, ArraySchema...).The onAdd callback is called with the new instance and its key on holder object as argument.
-```typescript
-      this.my_room.state.players.onAdd = (player: any, key: any) => {
-        this.add(player, key);
-      };
-```
+
 ```typescript
       this.my_room.state.players.onAdd = (player: any, key: any) => {
          player.onChange = function(changes) {
