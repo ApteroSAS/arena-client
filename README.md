@@ -73,5 +73,5 @@ The onAdd callback  allows the client to listen to the state of a room if anothe
     };
       };
 ```
-## onRemove
+## OnRemove
 ## Send data to the room
