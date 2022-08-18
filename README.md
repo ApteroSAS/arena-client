@@ -76,12 +76,13 @@ this.room.state.players.onAdd = (player: any, key: any) => {
 ```
 ## OnRemove
 The onRemove callback can only be used in maps (MapSchema) and arrays (ArraySchema). The onRemove callback is called with the removed instance and its key on holder object as argument.
+
 ```typescript
 this.room.state.players.onRemove = (player: any, sessionId: any) => {
   this.remove(player, sessionId);
 };
 
-     ```
+```
 ## Send data to the room
 ```typescript
 this.room.send("move", {
