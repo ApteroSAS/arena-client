@@ -13,7 +13,8 @@
 -[Three.js](https://threejs.org/)
  
 ## Installation
-1.Get the server connection link at (https://console.colyseus.io/login)
+1.Get the server connection link at [Arena](https://console.colyseus.io/login)
+
 Clone the template repository
 ```
 git clone https://github.com/ApteroSAS/arena-client.git
