@@ -83,7 +83,7 @@ this.room.state.players.onRemove = (player: any, sessionId: any) => {
 };
 
 ```
-## Send data to the room
+## Send data to the server
 ```typescript
 this.room.send("move", {
     x: this.cube.position.x,
@@ -92,4 +92,5 @@ this.room.send("move", {
     yr: this.cube.rotation.y,
     lastUpdate: Date.now(),
   });
-     ```
+  
+ ```
