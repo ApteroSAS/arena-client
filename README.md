@@ -8,9 +8,9 @@
 
 ## Technical Documentation
 
--[Colyseus](https://www.colyseus.io/)
--[Typescript](https://www.typescriptlang.org/docs/)
--[Three.js](https://threejs.org/)
+- [Colyseus](https://www.colyseus.io/)
+- [Typescript](https://www.typescriptlang.org/docs/)
+- [Three.js](https://threejs.org/)
  
 ## Installation
 1.Get the server connection link at [Arena](https://console.colyseus.io/login)
