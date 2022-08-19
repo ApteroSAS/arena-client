@@ -65,6 +65,7 @@ The onAdd callback  allows the client to listen to the state of a room if anothe
 
 ```typescript
 this.room.state.players.onAdd = (player: any, key: any) => {
+  //add additional code here 
   player.onChange = function (changes) {
     changes.forEach((change) => {
       console.log(change.field);
@@ -72,6 +73,7 @@ this.room.state.players.onAdd = (player: any, key: any) => {
       console.log(change.previousValue);
     });
   };
+  //add additional code here 
 };
 
 ```
@@ -81,10 +83,12 @@ The onRemove callback can only be used in maps (MapSchema) and arrays (ArraySche
 ```typescript
 this.room.state.players.onRemove = (player: any, sessionId: any) => {
   this.remove(player, sessionId);
+  //ad your logic to remove your player entity from the world
 };
 
 ```
 ## Send data to the server
+
 ```typescript
 this.room.send("move", {
     x: this.cube.position.x,
