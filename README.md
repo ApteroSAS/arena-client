@@ -1,5 +1,6 @@
 # Three.js TypeScript colyseus arena client template
 This project present the client  application of our network poc is a project developed by threeJS, presents a viewer who must see 1000 customers simultaneously, concretely it is a cube which presents a simulation of an avatar in a 3D environment.
+// explain how it works with arena
 
 ## Features
 
@@ -35,7 +36,7 @@ npm install
 ```typescript
   plugins: [
         new webpack.DefinePlugin({
-          "process.env.ENDPOINT": JSON.stringify("ws://localhost:2567")
+          "process.env.ENDPOINT": JSON.stringify("YOUR_SERVER_URL") //replace YOUR_SERVER_URL with the connection url you get from arena colyseus
         })
       ]
 ```
@@ -62,7 +63,7 @@ const ENDPOINT = process.env.ENDPOINT;
 export const client = new Client(ENDPOINT);
 ```
 ## Joining to a room
-joinOrCreate  function is used for join or create a room and return a client seat reservation.
+joinOrCreate callback is used for join or create a room and return a client seat reservation.
 ```typescript
 this.room = await this.client.joinOrCreate("my_room"||process.env.roomName);//roomName is the identifier set within the server parameters.
 ```
