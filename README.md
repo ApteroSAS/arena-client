@@ -16,7 +16,7 @@ This project present the client  application of our network poc is a project dev
 ## Installation
 1.Get the server connection link:
 
-- [Sign up for a Arena Cloud Account](https://console.colyseus.io/register)
+- Sign up for a[Arena Cloud Account](https://console.colyseus.io/register)
 - Create your Arena server
 - Upload your  code server,make sure to build  your code first and  then upload the content of the build folder (lib folder).
 - Deploy your code server
