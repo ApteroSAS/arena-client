@@ -56,6 +56,7 @@ const ENDPOINT = process.env.ENDPOINT;
 export const client = new Client(ENDPOINT);
 ```
 ## Joining to a room
+joinOrCreate  function is used for join or create a room and return a client seat reservation.
 ```typescript
 this.room = await this.client.joinOrCreate("my_room"||process.env.roomName);//roomName is the identifier set within the server parameters.
 ```
