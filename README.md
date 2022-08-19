@@ -57,7 +57,8 @@ export const client = new Client(ENDPOINT);
 ```
 ## Joining to a room
 ```typescript
-this.room = await this.client.joinOrCreate("my_room"||process.env.room_name);
+roomName is the identifier set within the server parameters.
+this.room = await this.client.joinOrCreate("my_room"||process.env.roomName);
 ```
 ## OnAdd
 The onAdd callback  allows the client to listen to the state of a room if another client joins, it can only be used in collection of items (MapSchema, ArraySchema...).The onAdd callback is called with the new instance and its key on holder object as argument.
