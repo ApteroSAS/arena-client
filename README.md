@@ -18,25 +18,26 @@ This project present the client  application of our network poc is a project dev
 
 - Sign up for a [Arena Cloud Account](https://console.colyseus.io/register)
 - Create your Arena server
-- Upload your  code server,make sure to build  your code first and  then upload the content of the build folder (lib folder).
+- Upload your  code server,make sure to build  your code first and  then upload the content of the build folder (lib folder)
 - Deploy your code server
-- Use Arena Dashboard to configure your server  and set the average CCU for scaling and max CCU per server 
+- Utilize the Arena Dashboard to configure your server  and set the average CCU for scaling and max CCU per server
 - Get the server connection link from the arena dashboard and use  it in the client configuration to connect the client with the server
+
 2.Clone the repository
 ```
 git clone https://github.com/ApteroSAS/arena-client.git
 ```
 
-3.To be able to build the client application, you'll need to enter in the folder, and install the required dependencies first.
+3.To be able to build the client application, you'll need to enter in the folder, and install the required dependencies first
 ```
 cd ArenaClient
 npm install
 ```
-4.To configure the client application and connect it to the server go to the webpack config file and add the endpoint link
+4.To configure the client application and connect it to the server, go to the webpack config file and add the endpoint
 ```typescript
   plugins: [
         new webpack.DefinePlugin({
-          "process.env.ENDPOINT": JSON.stringify("YOUR_SERVER_URL") //replace YOUR_SERVER_URL with the connection url you get from arena colyseus
+          "process.env.ENDPOINT": JSON.stringify("YOUR_SERVER_URL") //replace YOUR_SERVER_URL with the connection URL that you get from arena colyseus
         })
       ]
 ```
@@ -63,14 +64,15 @@ const ENDPOINT = process.env.ENDPOINT;
 export const client = new Client(ENDPOINT);
 ```
 ## Joining to a room
-joinOrCreate callback is used for join or create a room and return a client seat reservation.
+joinOrCreate callback is used for joining, creating room and return the  client seat reservation
 ```typescript
 this.room = await this.client.joinOrCreate("my_room"||process.env.roomName);//roomName is the identifier set within the server parameters.
 ```
 ## OnAdd
-The onAdd callback  allows the client to listen to the state of a room if another client joins, it can only be used in collection of items (MapSchema, ArraySchema...).The onAdd callback is called with the new instance and its key on holder object as argument.
+The onAdd callback  allows the client to listen to the state of a room if another client joins it.The onAdd callback can only be used in collection of items (MapSchema, ArraySchema...).This callback  is called with the new instance and its key on holder object as argument.
 
-The onChange callback is used to  detect changes inside a collection of non-primitive types (holding Schema instances),use onAdd and register onChange on them.
+
+The onChange callback is used to  detect changes inside a collection of non-primitive types (holding Schema instances).
 ```typescript
 this.room.state.players.onAdd = (player: any, key: any) => {
   //add additional code here 
@@ -90,7 +92,7 @@ The onRemove callback can only be used in maps (MapSchema) and arrays (ArraySche
 ```typescript
 this.room.state.players.onRemove = (player: any, sessionId: any) => {
   this.remove(player, sessionId);
-  //ad your logic to remove your player entity from the world
+  //add your logic to remove your entity from the world
 };
 
 ```
