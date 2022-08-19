@@ -88,7 +88,7 @@ this.room.state.players.onRemove = (player: any, sessionId: any) => {
 
 ```
 ## Send data to the server
-
+The send callback is used to send a type of message to the  server(Colyseus room).
 ```typescript
 this.room.send("move", {
     x: this.cube.position.x,
