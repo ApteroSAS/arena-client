@@ -14,11 +14,13 @@ This project present the client  application of our network poc is a project dev
  
 ## Installation
 1.Get the server connection link:
--[Sign up for a Arena Cloud Account](https://console.colyseus.io/register)
 
+- [Sign up for a Arena Cloud Account](https://console.colyseus.io/register)
 - Create your Arena server
-- Upload code server,make sure to build  your code first and  then upload the content of the build folder (lib folder).
-- 
+- Upload your  code server,make sure to build  your code first and  then upload the content of the build folder (lib folder).
+- Deploy your code server
+- Use Arena Dashboard to configure your server  and set the average CCU for scaling and max CCU per server 
+- Get the server connection link from the arena dashboard and use  it in the client configuration to connect the client with the server
 2.Clone the repository
 ```
 git clone https://github.com/ApteroSAS/arena-client.git
