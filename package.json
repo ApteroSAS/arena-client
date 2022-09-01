@@ -6,7 +6,6 @@
     "type": "git",
     "url": "https://github.com/ApteroSAS/arena-client.git"
   },
-
   "keywords": [
     "Three.js",
     "TypeScript",
@@ -17,8 +16,8 @@
   ],
   "author": "EL AZOUZI CHAIMAE",
   "scripts": {
-    "start": "webpack serve --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js",
+    "start": "cross-env ENDPOINT=ws://localhost:2567 ROOM_NAME=my_room webpack serve --config webpack.dev.js",
+    "build": "cross-env ENDPOINT=wss://rtd9iz.colyseus.dev ROOM_NAME=my_room webpack --config webpack.prod.js",
     "test": "npx colyseus-loadtest script.ts --room battle --numClients 50 --endpoint ws://localhost:2567"
   },
   "dependencies": {
@@ -28,6 +27,8 @@
   },
   "devDependencies": {
     "@types/three": "^0.134.0",
+    "cross-env": "^7.0.3",
+    "process": "^0.11.10",
     "ts-loader": "^9.2.6",
     "typescript": "^4.5.2",
     "webpack": "^5.64.4",

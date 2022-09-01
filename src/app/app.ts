@@ -15,7 +15,6 @@ export class App {
   private scene: Scene;
   private camera: PerspectiveCamera;
   //  private controls: OrbitControls;
-
   private cube: Cube;
   private my_room!: Colyseus.Room;
   private client: Colyseus.Client;
@@ -105,7 +104,9 @@ export class App {
   }
   async join() {
     try {
-      const room = await this.client.joinOrCreate("my_room"||process.env.room_name);
+      const room = await this.client.joinOrCreate(
+        "my_room" || process.env.ROOM_NAME
+      );
       this.my_room = room;
       this.roomID = room.id;
       this.sessionID = room.sessionId;

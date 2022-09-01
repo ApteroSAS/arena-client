@@ -33,7 +33,11 @@ git clone https://github.com/ApteroSAS/arena-client.git
 cd ArenaClient
 npm install
 ```
-4.To configure the client application and connect it to the server, go to the webpack config file and add the endpoint
+4.To configure the client application and connect it to the server:
+# Running the server locally
+If you want to run your server locally go to https://github.com/ApteroSAS/arena-server.git.
+# Running the Arena Colyseus Server
+If you want to run the Arena Colyseus Server, go to the webpack.prod.js file and add the endpoint that you obtain from your Arena cloud Account.
 ```typescript
   plugins: [
         new webpack.DefinePlugin({
