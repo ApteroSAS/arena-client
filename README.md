@@ -1,7 +1,6 @@
 # Three.js TypeScript colyseus arena client template
-This project present the client  application of our network poc is a project developed by threeJS, presents a viewer who must see 1000 customers simultaneously, concretely it is a cube which presents a simulation of an avatar in a 3D environment.
-// explain how it works with arena
-
+// add disc  
+// how it works with arena
 ## Features
 
 - **TypeScript** supported
