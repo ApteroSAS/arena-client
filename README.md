@@ -1,6 +1,4 @@
 # Three.js TypeScript colyseus arena client template
-// add disc  
-// how it works with arena
 ## Features
 
 - **TypeScript** supported
